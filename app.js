@@ -1,4 +1,4 @@
-var stage, snakehead, xyswitch, xyText, xyRandLoc
+var stage, snakehead, xyswitch, xyText, xyText2, xyRandLoc, score
  
 function randLoc () {
 
@@ -14,6 +14,8 @@ function xyswitchfunc () {
 }
 
 function init() {
+
+  score = 0;
 
   stage = new createjs.Stage("gameCanvas");
   
@@ -32,20 +34,36 @@ function init() {
   stage.addChild(snakehead);
 
   xyswitchfunc();
-
-  /*
-  xyText = new createjs.Text(xyswitch, "bold 48px Arial", "#FFFFFF");
-  xyText.textAlign = "center";
+  
+  xyText = new createjs.Text("Clicked:", "bold 48px Arial", "#FFFFFF");
+  xyText.textAlign = "left";
   xyText.textBaseline = "middle";
   xyText.x = 40;
   xyText.y = 40;
   stage.addChild(xyText);
-  */
+
+  xyText2 = new createjs.Text(score, "bold 48px Arial", "#FFFFFF");
+  xyText2.textAlign = "left";
+  xyText2.textBaseline = "middle";
+  xyText2.x = 240;
+  xyText2.y = 40;
+  stage.addChild(xyText2);
+
+  snakehead.on("click",function(evt) {
+    // currentTarget will be the container that the event listener was added to:
+    score += 1;
+    xyText2.text = score;
+    evt.currentTarget.x = randLoc();
+    evt.currentTarget.y = randLoc();
+    xyswitchfunc();
+    // make sure to redraw the stage to show the change:
+    stage.update();
+  });
 
 }
 
 function tick(event) {
-  
+
   switch(xyswitch) {
     case 1:
       snakehead.x = snakehead.x + 5;
