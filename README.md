@@ -1,2 +1,3 @@
-# jyxtech.github.io
-ularthesnake classic snake game.
+# Overview
+
+Simple Snake game for childhood reminiscence using CreateJS.
