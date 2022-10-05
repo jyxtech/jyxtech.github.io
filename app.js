@@ -18,6 +18,8 @@ function init() {
   score = 0;
 
   stage = new createjs.Stage("gameCanvas");
+
+  createjs.Touch.enable(stage);
   
   createjs.Ticker.on("tick", tick);
   //createjs.Ticker.setFPS(30);

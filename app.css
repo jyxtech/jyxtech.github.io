@@ -8,3 +8,9 @@ body {
   background: #6acc77;
   margin: 0 auto;
 }
+
+@media ( max-width: 500px ) {
+  #gameCanvas {
+    width: 100%;
+  }
+}
